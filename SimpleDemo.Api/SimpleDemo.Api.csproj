@@ -7,11 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="tmp\**" />
+    <Content Remove="tmp\**" />
+    <EmbeddedResource Remove="tmp\**" />
+    <None Remove="tmp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SimpleDemo.Application\SimpleDemo.Application.csproj" />
     <ProjectReference Include="..\SimpleDemo.ServiceDefaults\SimpleDemo.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
