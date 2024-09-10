@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity.Data;
+using Microsoft.AspNetCore.Mvc;
 using SimpleDemo.Application.Commerce.User.Query;
 using SimpleDemo.Application.DataTransfer;
 using SimpleDemo.Infrastructure.Query;
+using SimpleDemo.Shared.Constant;
 
 namespace SimpleDemo.Api.Controllers
 {
@@ -10,10 +12,21 @@ namespace SimpleDemo.Api.Controllers
     public class UserController(IQueryBus queryBus) : ControllerBase
     {
         [HttpGet]
-        public async Task<ICollection<UserDto>> View()
+        public async Task<IActionResult> View()
         {
-            var users = await queryBus.SendAsync<UserQuery, ICollection<UserDto>>(new UserQuery());
-            return users;
+            var users = await queryBus.SendAsync<ViewUserQuery, ICollection<UserDto>>(new ViewUserQuery());
+            return Ok(users);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
+        {
+            var user = await queryBus.SendAsync<LoginQuery, UserDto>(new LoginQuery()
+            {
+                Email = loginRequest.Email,
+                Password = loginRequest.Password
+            });
+            return Ok(user);
         }
     }
 }

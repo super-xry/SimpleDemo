@@ -6,6 +6,10 @@
         {
             public const string QueueMessageIsRequired = "QueueMessageIsRequired";
             public const string QueryHandlerNotFound = "QueryHandlerNotFound";
+
+            public const string UserNotFound = "UserNotFound";
+
+            public const string UnknownException = "UnknownException";
         }
     }
 }

@@ -11,7 +11,7 @@ using SimpleDemo.Infrastructure.Repository;
 namespace SimpleDemo.Infrastructure.Migrations
 {
     [DbContext(typeof(CommerceDbContext))]
-    [Migration("20240909160847_InitCommerceDatabase")]
+    [Migration("20240910142804_InitCommerceDatabase")]
     partial class InitCommerceDatabase
     {
         /// <inheritdoc />
@@ -30,14 +30,18 @@ namespace SimpleDemo.Infrastructure.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ModifiedBy")
                         .HasMaxLength(64)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("ModifiedDate")
+                    b.Property<DateTimeOffset?>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -45,6 +49,10 @@ namespace SimpleDemo.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NickName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -62,6 +70,30 @@ namespace SimpleDemo.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("User", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "eb7c2bced0f544f8990d3db8b03a9468",
+                            CreatedBy = "Application",
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8664), new TimeSpan(0, 0, 0, 0, 0)),
+                            Email = "admin@domain.com",
+                            Name = "Admin",
+                            NickName = "Judy",
+                            Password = "Admin",
+                            RoleId = "e5c937f8008341459823324edc21c4d2"
+                        },
+                        new
+                        {
+                            Id = "3b63e730f3a94f04a236d83fc6e49da1",
+                            CreatedBy = "Application",
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8670), new TimeSpan(0, 0, 0, 0, 0)),
+                            Email = "visitor@domain.com",
+                            Name = "Visitor",
+                            NickName = "Hellen",
+                            Password = "Hellen",
+                            RoleId = "e5c937f8008341459823324edc21c4d2"
+                        });
                 });
 
             modelBuilder.Entity("SimpleDemo.Domain.DbEntity.LogEntity", b =>
@@ -78,7 +110,7 @@ namespace SimpleDemo.Infrastructure.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Level")
@@ -92,7 +124,7 @@ namespace SimpleDemo.Infrastructure.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("ModifiedDate")
+                    b.Property<DateTimeOffset?>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Target")
@@ -125,7 +157,7 @@ namespace SimpleDemo.Infrastructure.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -140,7 +172,7 @@ namespace SimpleDemo.Infrastructure.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("ModifiedDate")
+                    b.Property<DateTimeOffset?>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("RoleId")
@@ -149,12 +181,40 @@ namespace SimpleDemo.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Label")
-                        .IsUnique();
+                    b.HasIndex("Label");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("Permission", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "d1a6c5fdcbd044a18d646c18a157cd29",
+                            CreatedBy = "Application",
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8616), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "Full access for permission.",
+                            Label = "Permission.Full",
+                            RoleId = "e5c937f8008341459823324edc21c4d2"
+                        },
+                        new
+                        {
+                            Id = "aaee094758984331a9ea3fbeb01274ba",
+                            CreatedBy = "Application",
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8629), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "Full access for user.",
+                            Label = "Permission.Full",
+                            RoleId = "e5c937f8008341459823324edc21c4d2"
+                        },
+                        new
+                        {
+                            Id = "ebb3d124da194877b7626d4597542ec4",
+                            CreatedBy = "Application",
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8631), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "Read the user self data.",
+                            Label = "User.Read",
+                            RoleId = "600b8e0b5bbc4b23a1e781311ef00e49"
+                        });
                 });
 
             modelBuilder.Entity("SimpleDemo.Domain.DbEntity.RoleEntity", b =>
@@ -167,7 +227,7 @@ namespace SimpleDemo.Infrastructure.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -179,7 +239,7 @@ namespace SimpleDemo.Infrastructure.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("ModifiedDate")
+                    b.Property<DateTimeOffset?>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -193,6 +253,24 @@ namespace SimpleDemo.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Role", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "e5c937f8008341459823324edc21c4d2",
+                            CreatedBy = "Application",
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8582), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "Admin",
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = "600b8e0b5bbc4b23a1e781311ef00e49",
+                            CreatedBy = "Application",
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8587), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "Visitor",
+                            Name = "Visitor"
+                        });
                 });
 
             modelBuilder.Entity("SimpleDemo.Domain.DbEntity.CommerceEntity.UserEntity", b =>

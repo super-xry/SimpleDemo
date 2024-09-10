@@ -4,9 +4,9 @@ namespace SimpleDemo.Domain.DbEntity.Common
 {
     public class AuditableEntity : Entity, IAuditable
     {
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.UtcNow;
 
-        public DateTime? ModifiedDate { get; set; }
+        public DateTimeOffset? ModifiedDate { get; set; }
 
         [StringLength(64)]
         public string CreatedBy { get; set; } = null!;

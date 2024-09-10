@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace SimpleDemo.Infrastructure.Migrations
 {
     /// <inheritdoc />
@@ -21,8 +23,8 @@ namespace SimpleDemo.Infrastructure.Migrations
                     Level = table.Column<int>(type: "INTEGER", nullable: false),
                     Target = table.Column<string>(type: "TEXT", nullable: true),
                     Category = table.Column<int>(type: "INTEGER", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    CreatedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    ModifiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<string>(type: "TEXT", maxLength: 64, nullable: false),
                     ModifiedBy = table.Column<string>(type: "TEXT", maxLength: 64, nullable: true)
                 },
@@ -38,8 +40,8 @@ namespace SimpleDemo.Infrastructure.Migrations
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 64, nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    CreatedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    ModifiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<string>(type: "TEXT", maxLength: 64, nullable: false),
                     ModifiedBy = table.Column<string>(type: "TEXT", maxLength: 64, nullable: true)
                 },
@@ -56,8 +58,8 @@ namespace SimpleDemo.Infrastructure.Migrations
                     Label = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     RoleId = table.Column<string>(type: "TEXT", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    CreatedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    ModifiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<string>(type: "TEXT", maxLength: 64, nullable: false),
                     ModifiedBy = table.Column<string>(type: "TEXT", maxLength: 64, nullable: true)
                 },
@@ -79,9 +81,11 @@ namespace SimpleDemo.Infrastructure.Migrations
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     NickName = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: false),
                     RoleId = table.Column<string>(type: "TEXT", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    CreatedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    ModifiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<string>(type: "TEXT", maxLength: 64, nullable: false),
                     ModifiedBy = table.Column<string>(type: "TEXT", maxLength: 64, nullable: true)
                 },
@@ -94,6 +98,34 @@ namespace SimpleDemo.Infrastructure.Migrations
                         principalTable: "Role",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Role",
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "ModifiedBy", "ModifiedDate", "Name" },
+                values: new object[,]
+                {
+                    { "600b8e0b5bbc4b23a1e781311ef00e49", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8587), new TimeSpan(0, 0, 0, 0, 0)), "Visitor", null, null, "Visitor" },
+                    { "e5c937f8008341459823324edc21c4d2", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8582), new TimeSpan(0, 0, 0, 0, 0)), "Admin", null, null, "Admin" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Permission",
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "Label", "ModifiedBy", "ModifiedDate", "RoleId" },
+                values: new object[,]
+                {
+                    { "aaee094758984331a9ea3fbeb01274ba", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8629), new TimeSpan(0, 0, 0, 0, 0)), "Full access for user.", "Permission.Full", null, null, "e5c937f8008341459823324edc21c4d2" },
+                    { "d1a6c5fdcbd044a18d646c18a157cd29", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8616), new TimeSpan(0, 0, 0, 0, 0)), "Full access for permission.", "Permission.Full", null, null, "e5c937f8008341459823324edc21c4d2" },
+                    { "ebb3d124da194877b7626d4597542ec4", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8631), new TimeSpan(0, 0, 0, 0, 0)), "Read the user self data.", "User.Read", null, null, "600b8e0b5bbc4b23a1e781311ef00e49" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "ModifiedBy", "ModifiedDate", "Name", "NickName", "Password", "RoleId" },
+                values: new object[,]
+                {
+                    { "3b63e730f3a94f04a236d83fc6e49da1", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8670), new TimeSpan(0, 0, 0, 0, 0)), "visitor@domain.com", null, null, "Visitor", "Hellen", "Hellen", "e5c937f8008341459823324edc21c4d2" },
+                    { "eb7c2bced0f544f8990d3db8b03a9468", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8664), new TimeSpan(0, 0, 0, 0, 0)), "admin@domain.com", null, null, "Admin", "Judy", "Admin", "e5c937f8008341459823324edc21c4d2" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -119,8 +151,7 @@ namespace SimpleDemo.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Permission_Label",
                 table: "Permission",
-                column: "Label",
-                unique: true);
+                column: "Label");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Permission_RoleId",

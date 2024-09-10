@@ -14,7 +14,7 @@ namespace SimpleDemo.Infrastructure.Repository
             modelBuilder.Entity<RoleEntity>().HasIndex(x => x.Name).IsUnique();
 
             modelBuilder.Entity<PermissionEntity>().ToTable("Permission").HasKey(x => x.Id);
-            modelBuilder.Entity<PermissionEntity>().HasIndex(x => x.Label).IsUnique();
+            modelBuilder.Entity<PermissionEntity>().HasIndex(x => x.Label);
 
             modelBuilder.Entity<LogEntity>().ToTable("Log").HasKey(x => x.Id);
             modelBuilder.Entity<LogEntity>().HasIndex(x => x.Title);

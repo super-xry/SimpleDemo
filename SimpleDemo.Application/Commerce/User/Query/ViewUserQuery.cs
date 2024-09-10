@@ -2,7 +2,7 @@
 
 namespace SimpleDemo.Application.Commerce.User.Query
 {
-    public class UserQuery : IQuery
+    public class ViewUserQuery : IQuery
     {
     }
 }

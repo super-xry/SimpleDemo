@@ -11,7 +11,7 @@ namespace SimpleDemo.Infrastructure.Query
 
             if (queryHandler == null)
             {
-                throw new SimpleDemoNotFoundException(SimpleExceptionCode.Application.QueryHandlerNotFound, "Query handler not found");
+                throw new SimpleNotFoundException(SimpleExceptionCode.Application.QueryHandlerNotFound, "Query handler not found");
             }
 
             return await queryHandler.HandleAsync(query, cancellationToken);

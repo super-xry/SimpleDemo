@@ -37,12 +37,20 @@ namespace SimpleDemo.Api
 
             app.MapDefaultEndpoints();
 
+            var isDevelopment = app.Environment.IsDevelopment();
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            if (isDevelopment)
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseExceptionHandler(applicationBuilder =>
+            {
+                applicationBuilder.UseCustomErrors(isDevelopment);
+            });
+
+            app.UseEventHandlers();
 
             app.UseHttpsRedirection();
 
@@ -54,7 +62,7 @@ namespace SimpleDemo.Api
         }
 
         /// <summary>
-        /// <see cref="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-7.0#parameter-transformers"/>
+        /// <see><cref>https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-7.0#parameter-transformers</cref></see>
         /// </summary>
         public class SlugifyParameterTransformer : IOutboundParameterTransformer
         {

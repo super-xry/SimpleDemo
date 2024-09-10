@@ -5,6 +5,6 @@ namespace SimpleDemo.Infrastructure.Events
 {
     public interface IEvent : IEntity, IMessage
     {
-        DateTime TimeStamp { get; set; }
+        DateTimeOffset TimeStamp { get; set; }
     }
 }

@@ -11,6 +11,12 @@ namespace SimpleDemo.Domain.DbEntity.CommerceEntity
         public string NickName { get; set; } = null!;
 
         [Required]
+        public string Email { get; set; } = null!;
+
+        [Required]
+        public string Password { get; set; } = null!;
+
+        [Required]
         public Guid RoleId { get; set; }
 
         [ForeignKey("RoleId")]

@@ -6,13 +6,12 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-	<!--<ItemGroup>
+	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-	</ItemGroup>-->
+	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="Commerce\User\Command\" />
-		<Folder Include="Events\" />
 		<Folder Include="Logging\" />
 		<Folder Include="SignalR\" />
 	</ItemGroup>
