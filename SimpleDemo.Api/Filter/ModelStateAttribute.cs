@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace SimpleDemo.Api.Filter
 {
-    public class ModelStateActionFilter : ActionFilterAttribute
+    public class ModelStateAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {

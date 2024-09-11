@@ -38,8 +38,8 @@ namespace SimpleDemo.Application
 
         private static void AddCommonService(this IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
             services.AddServiceBus();
-
             var inProcessBus = new InProcessBus();
             services.AddSingleton<IHandlerRegistrar>(inProcessBus);
             services.AddSingleton<IEventPublisher>(inProcessBus);

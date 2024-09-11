@@ -190,8 +190,8 @@ namespace SimpleDemo.Infrastructure.Migrations
                             Id = "d1a6c5fdcbd044a18d646c18a157cd29",
                             CreatedBy = "Application",
                             CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8616), new TimeSpan(0, 0, 0, 0, 0)),
-                            Description = "Full access for permission.",
-                            Label = "Permission.Full",
+                            Description = "FullAccess access for permission.",
+                            Label = "Permission.FullAccess",
                             RoleId = "e5c937f8008341459823324edc21c4d2"
                         },
                         new
@@ -199,8 +199,8 @@ namespace SimpleDemo.Infrastructure.Migrations
                             Id = "aaee094758984331a9ea3fbeb01274ba",
                             CreatedBy = "Application",
                             CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8629), new TimeSpan(0, 0, 0, 0, 0)),
-                            Description = "Full access for user.",
-                            Label = "Permission.Full",
+                            Description = "FullAccess access for user.",
+                            Label = "Permission.FullAccess",
                             RoleId = "e5c937f8008341459823324edc21c4d2"
                         },
                         new

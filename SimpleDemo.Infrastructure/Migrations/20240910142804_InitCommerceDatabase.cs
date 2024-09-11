@@ -114,8 +114,8 @@ namespace SimpleDemo.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "Label", "ModifiedBy", "ModifiedDate", "RoleId" },
                 values: new object[,]
                 {
-                    { "aaee094758984331a9ea3fbeb01274ba", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8629), new TimeSpan(0, 0, 0, 0, 0)), "Full access for user.", "Permission.Full", null, null, "e5c937f8008341459823324edc21c4d2" },
-                    { "d1a6c5fdcbd044a18d646c18a157cd29", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8616), new TimeSpan(0, 0, 0, 0, 0)), "Full access for permission.", "Permission.Full", null, null, "e5c937f8008341459823324edc21c4d2" },
+                    { "aaee094758984331a9ea3fbeb01274ba", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8629), new TimeSpan(0, 0, 0, 0, 0)), "FullAccess access for user.", "Permission.FullAccess", null, null, "e5c937f8008341459823324edc21c4d2" },
+                    { "d1a6c5fdcbd044a18d646c18a157cd29", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8616), new TimeSpan(0, 0, 0, 0, 0)), "FullAccess access for permission.", "Permission.FullAccess", null, null, "e5c937f8008341459823324edc21c4d2" },
                     { "ebb3d124da194877b7626d4597542ec4", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8631), new TimeSpan(0, 0, 0, 0, 0)), "Read the user self data.", "User.Read", null, null, "600b8e0b5bbc4b23a1e781311ef00e49" }
                 });
 

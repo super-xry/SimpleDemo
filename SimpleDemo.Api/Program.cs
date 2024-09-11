@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using SimpleDemo.Api.Filter;
 using SimpleDemo.Application;
 using SimpleDemo.Infrastructure.Repository;
+using SimpleDemo.Security.Extensions;
 using SimpleDemo.ServiceDefaults;
 using System.Text.RegularExpressions;
 
@@ -15,16 +18,18 @@ namespace SimpleDemo.Api
             builder.AddServiceDefaults();
 
             // Add services to the container.
-
             builder.Services.AddControllers(options =>
             {
+                options.Filters.Add<ModelStateAttribute>();
                 options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
+            }).AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
             });
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            AddSwagger(builder.Services);
 
             builder.Services.AddDatabases(builder.Configuration);
+            builder.Services.AddJwtAuth(builder.Configuration);
             builder.Services.AddCommereApiServices();
 
             var app = builder.Build();
@@ -59,6 +64,31 @@ namespace SimpleDemo.Api
             app.MapControllers();
 
             app.Run();
+        }
+
+        private static void AddSwagger(IServiceCollection services)
+        {
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Simple demo commerce API",
+                    Version = "v1",
+                    Description = "SimpleDemo "
+                });
+
+                c.CustomSchemaIds(x => x.FullName);
+
+                c.AddSecurityDefinition("Bearer", SwaggerSecuritySchemeHelper.GetApiSecurityScheme());
+
+                c.AddSecurityRequirement(SwaggerSecuritySchemeHelper.GetSecurityRequirement());
+
+                /*c.OperationFilter<AddAuthorizationHeaderOperationFilter>();
+
+                c.OperationFilter<RemoveAuthorizationHeaderOperationFilter>();*/
+            });
         }
 
         /// <summary>

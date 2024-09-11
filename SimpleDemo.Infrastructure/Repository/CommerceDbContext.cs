@@ -19,11 +19,11 @@ namespace SimpleDemo.Infrastructure.Repository
             base.OnModelCreating(modelBuilder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging();
             base.OnConfiguring(optionsBuilder);
-        }
+        }*/
 
         private static void InitDemoData(ModelBuilder modelBuilder)
         {
@@ -54,18 +54,18 @@ namespace SimpleDemo.Infrastructure.Repository
                 {
                     Id = Guid.NewGuid(),
                     CreatedBy =Shared.Constant.Common.DefaultCreator,
-                    Description = "Full access for permission.",
+                    Description = "FullAccess access for permission.",
                     CreatedDate = DateTimeOffset.UtcNow,
-                    Label = Permission.Full,
+                    Label = Permission.FullAccess,
                     RoleId = adminId,
                 },
                 new()
                 {
                     Id = Guid.NewGuid(),
                     CreatedBy = Shared.Constant.Common.DefaultCreator,
-                    Description = "Full access for user.",
+                    Description = "FullAccess access for user.",
                     CreatedDate = DateTimeOffset.UtcNow,
-                    Label = User.Full,
+                    Label = User.FullAccess,
                     RoleId = adminId,
                 },
                 new()

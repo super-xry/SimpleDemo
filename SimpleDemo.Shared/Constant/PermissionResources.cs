@@ -8,7 +8,7 @@
             public const string Read = "Permission.Read";
             public const string Update = "Permission.Update";
             public const string Add = "Permission.Add";
-            public const string Full = "Permission.Full";
+            public const string FullAccess = "Permission.FullAccess";
         }
 
         public struct User
@@ -17,7 +17,7 @@
             public const string Read = "User.Read";
             public const string Update = "User.Update";
             public const string Add = "User.Add";
-            public const string Full = "Permission.Full";
+            public const string FullAccess = "User.FullAccess";
         }
     }
 }

@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Extension\" />
-    <Folder Include="Middleware\" />
-    <Folder Include="Services\" />
-    <Folder Include="Attributes\" />
-    <Folder Include="Authentication\" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="8.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.21" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleDemo.Infrastructure\SimpleDemo.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

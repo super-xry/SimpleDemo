@@ -12,7 +12,6 @@
 
 	<ItemGroup>
 		<Folder Include="Commerce\User\Command\" />
-		<Folder Include="Logging\" />
 		<Folder Include="SignalR\" />
 	</ItemGroup>
 
@@ -22,6 +21,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\SimpleDemo.Infrastructure\SimpleDemo.Infrastructure.csproj" />
+	  <ProjectReference Include="..\SimpleDemo.Security\SimpleDemo.Security.csproj" />
 	</ItemGroup>
 
 </Project>
