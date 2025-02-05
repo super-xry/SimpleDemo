@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SimpleDemo.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitCommerceDatabase : Migration
+    public partial class InitCommerceDbContext : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -105,8 +105,8 @@ namespace SimpleDemo.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "ModifiedBy", "ModifiedDate", "Name" },
                 values: new object[,]
                 {
-                    { "600b8e0b5bbc4b23a1e781311ef00e49", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8587), new TimeSpan(0, 0, 0, 0, 0)), "Visitor", null, null, "Visitor" },
-                    { "e5c937f8008341459823324edc21c4d2", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8582), new TimeSpan(0, 0, 0, 0, 0)), "Admin", null, null, "Admin" }
+                    { "356948299a4e4daeb3eb6ef16f2e082b", "Application", new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2117), new TimeSpan(0, 0, 0, 0, 0)), "Admin", null, null, "Admin" },
+                    { "7960226b50474667bce3f9ec9c9e8a11", "Application", new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2122), new TimeSpan(0, 0, 0, 0, 0)), "Visitor", null, null, "Visitor" }
                 });
 
             migrationBuilder.InsertData(
@@ -114,9 +114,9 @@ namespace SimpleDemo.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "Label", "ModifiedBy", "ModifiedDate", "RoleId" },
                 values: new object[,]
                 {
-                    { "aaee094758984331a9ea3fbeb01274ba", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8629), new TimeSpan(0, 0, 0, 0, 0)), "FullAccess access for user.", "Permission.FullAccess", null, null, "e5c937f8008341459823324edc21c4d2" },
-                    { "d1a6c5fdcbd044a18d646c18a157cd29", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8616), new TimeSpan(0, 0, 0, 0, 0)), "FullAccess access for permission.", "Permission.FullAccess", null, null, "e5c937f8008341459823324edc21c4d2" },
-                    { "ebb3d124da194877b7626d4597542ec4", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8631), new TimeSpan(0, 0, 0, 0, 0)), "Read the user self data.", "User.Read", null, null, "600b8e0b5bbc4b23a1e781311ef00e49" }
+                    { "11fc9285577043f4bd31b662b848eb64", "Application", new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2149), new TimeSpan(0, 0, 0, 0, 0)), "FullAccess access for permission.", "Permission.FullAccess", null, null, "356948299a4e4daeb3eb6ef16f2e082b" },
+                    { "a44531e21c12495c8c8d6e5946c438df", "Application", new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2153), new TimeSpan(0, 0, 0, 0, 0)), "FullAccess access for user.", "User.FullAccess", null, null, "356948299a4e4daeb3eb6ef16f2e082b" },
+                    { "bc5d773f947042f3a007c8040736f5b1", "Application", new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2186), new TimeSpan(0, 0, 0, 0, 0)), "Read the user self data.", "User.Read", null, null, "7960226b50474667bce3f9ec9c9e8a11" }
                 });
 
             migrationBuilder.InsertData(
@@ -124,8 +124,8 @@ namespace SimpleDemo.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "ModifiedBy", "ModifiedDate", "Name", "NickName", "Password", "RoleId" },
                 values: new object[,]
                 {
-                    { "3b63e730f3a94f04a236d83fc6e49da1", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8670), new TimeSpan(0, 0, 0, 0, 0)), "visitor@domain.com", null, null, "Visitor", "Hellen", "Hellen", "e5c937f8008341459823324edc21c4d2" },
-                    { "eb7c2bced0f544f8990d3db8b03a9468", "Application", new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8664), new TimeSpan(0, 0, 0, 0, 0)), "admin@domain.com", null, null, "Admin", "Judy", "Admin", "e5c937f8008341459823324edc21c4d2" }
+                    { "0610d93676b14cd799e64254e347a49a", "Application", new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2221), new TimeSpan(0, 0, 0, 0, 0)), "visitor@domain.com", null, null, "Visitor", "Hellen", "Hellen", "356948299a4e4daeb3eb6ef16f2e082b" },
+                    { "a8a95945c3c94fb1a677aa6394d3ee01", "Application", new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2216), new TimeSpan(0, 0, 0, 0, 0)), "admin@domain.com", null, null, "Admin", "Judy", "Admin", "356948299a4e4daeb3eb6ef16f2e082b" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -8,7 +8,7 @@ using SimpleDemo.Shared.Constant;
 
 namespace SimpleDemo.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserController(IQueryBus queryBus) : ControllerBase
     {
@@ -21,6 +21,7 @@ namespace SimpleDemo.Api.Controllers
         }
 
         [HttpPost("login")]
+        [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {
             var user = await queryBus.SendAsync<LoginQuery, UserDto>(new LoginQuery()
@@ -29,6 +30,13 @@ namespace SimpleDemo.Api.Controllers
                 Password = loginRequest.Password
             });
             return Ok(user);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> UserName()
+        {
+            return Ok();
         }
     }
 }

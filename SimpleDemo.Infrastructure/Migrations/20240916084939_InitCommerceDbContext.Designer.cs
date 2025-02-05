@@ -11,8 +11,8 @@ using SimpleDemo.Infrastructure.Repository;
 namespace SimpleDemo.Infrastructure.Migrations
 {
     [DbContext(typeof(CommerceDbContext))]
-    [Migration("20240910142804_InitCommerceDatabase")]
-    partial class InitCommerceDatabase
+    [Migration("20240916084939_InitCommerceDbContext")]
+    partial class InitCommerceDbContext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,25 +74,25 @@ namespace SimpleDemo.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "eb7c2bced0f544f8990d3db8b03a9468",
+                            Id = "a8a95945c3c94fb1a677aa6394d3ee01",
                             CreatedBy = "Application",
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8664), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2216), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "admin@domain.com",
                             Name = "Admin",
                             NickName = "Judy",
                             Password = "Admin",
-                            RoleId = "e5c937f8008341459823324edc21c4d2"
+                            RoleId = "356948299a4e4daeb3eb6ef16f2e082b"
                         },
                         new
                         {
-                            Id = "3b63e730f3a94f04a236d83fc6e49da1",
+                            Id = "0610d93676b14cd799e64254e347a49a",
                             CreatedBy = "Application",
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8670), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2221), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "visitor@domain.com",
                             Name = "Visitor",
                             NickName = "Hellen",
                             Password = "Hellen",
-                            RoleId = "e5c937f8008341459823324edc21c4d2"
+                            RoleId = "356948299a4e4daeb3eb6ef16f2e082b"
                         });
                 });
 
@@ -190,30 +190,30 @@ namespace SimpleDemo.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d1a6c5fdcbd044a18d646c18a157cd29",
+                            Id = "11fc9285577043f4bd31b662b848eb64",
                             CreatedBy = "Application",
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8616), new TimeSpan(0, 0, 0, 0, 0)),
-                            Description = "Full access for permission.",
-                            Label = "Permission.Full",
-                            RoleId = "e5c937f8008341459823324edc21c4d2"
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2149), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "FullAccess access for permission.",
+                            Label = "Permission.FullAccess",
+                            RoleId = "356948299a4e4daeb3eb6ef16f2e082b"
                         },
                         new
                         {
-                            Id = "aaee094758984331a9ea3fbeb01274ba",
+                            Id = "a44531e21c12495c8c8d6e5946c438df",
                             CreatedBy = "Application",
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8629), new TimeSpan(0, 0, 0, 0, 0)),
-                            Description = "Full access for user.",
-                            Label = "Permission.Full",
-                            RoleId = "e5c937f8008341459823324edc21c4d2"
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2153), new TimeSpan(0, 0, 0, 0, 0)),
+                            Description = "FullAccess access for user.",
+                            Label = "User.FullAccess",
+                            RoleId = "356948299a4e4daeb3eb6ef16f2e082b"
                         },
                         new
                         {
-                            Id = "ebb3d124da194877b7626d4597542ec4",
+                            Id = "bc5d773f947042f3a007c8040736f5b1",
                             CreatedBy = "Application",
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8631), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2186), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Read the user self data.",
                             Label = "User.Read",
-                            RoleId = "600b8e0b5bbc4b23a1e781311ef00e49"
+                            RoleId = "7960226b50474667bce3f9ec9c9e8a11"
                         });
                 });
 
@@ -257,17 +257,17 @@ namespace SimpleDemo.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e5c937f8008341459823324edc21c4d2",
+                            Id = "356948299a4e4daeb3eb6ef16f2e082b",
                             CreatedBy = "Application",
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8582), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2117), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Admin",
                             Name = "Admin"
                         },
                         new
                         {
-                            Id = "600b8e0b5bbc4b23a1e781311ef00e49",
+                            Id = "7960226b50474667bce3f9ec9c9e8a11",
                             CreatedBy = "Application",
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 10, 14, 28, 4, 122, DateTimeKind.Unspecified).AddTicks(8587), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 9, 16, 8, 49, 38, 812, DateTimeKind.Unspecified).AddTicks(2122), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Visitor",
                             Name = "Visitor"
                         });

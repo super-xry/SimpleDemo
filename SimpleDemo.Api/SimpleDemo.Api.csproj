@@ -7,9 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="Services\**" />
 		<Compile Remove="tmp\**" />
+		<Content Remove="Services\**" />
 		<Content Remove="tmp\**" />
+		<EmbeddedResource Remove="Services\**" />
 		<EmbeddedResource Remove="tmp\**" />
+		<None Remove="Services\**" />
 		<None Remove="tmp\**" />
 	</ItemGroup>
 
@@ -20,10 +24,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\SimpleDemo.Application\SimpleDemo.Application.csproj" />
 		<ProjectReference Include="..\SimpleDemo.ServiceDefaults\SimpleDemo.ServiceDefaults.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Services\" />
 	</ItemGroup>
 
 </Project>

@@ -36,19 +36,21 @@ namespace SimpleDemo.Api
 
             if (builder.Configuration["AutoMigrating"] == bool.TrueString)
             {
-                var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<CommerceDbContext>();
-                dbContext.Database.Migrate();
+                DatabaseMigrating(app);
             }
 
             app.MapDefaultEndpoints();
 
             var isDevelopment = app.Environment.IsDevelopment();
             // Configure the HTTP request pipeline.
-            if (isDevelopment)
+            /*if (isDevelopment)
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
+            }*/
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseExceptionHandler(applicationBuilder =>
             {
@@ -89,6 +91,19 @@ namespace SimpleDemo.Api
 
                 c.OperationFilter<RemoveAuthorizationHeaderOperationFilter>();*/
             });
+        }
+
+        private static void DatabaseMigrating(WebApplication app)
+        {
+            var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<CommerceDbContext>();
+            var dataSource = dbContext.Database.GetDbConnection().DataSource;
+            var path = Path.GetDirectoryName(dataSource);
+            if (!string.IsNullOrEmpty(path) && !Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            dbContext.Database.Migrate();
         }
 
         /// <summary>
